@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
+            $table->string('segment');
+            $table->string('period');
+            $table->string('professor');
+            $table->string('students');
+            $table->unsignedBigInteger('institution_id');
             $table->timestamps();
         });
     }

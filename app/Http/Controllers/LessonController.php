@@ -15,6 +15,7 @@ class LessonController extends Controller
     public function index()
     {
         //
+        return Lesson::all();
     }
 
     /**
@@ -31,6 +32,7 @@ class LessonController extends Controller
     public function store(StoreLessonRequest $request)
     {
         //
+        return Lesson::create($request);
     }
 
     /**
@@ -39,6 +41,7 @@ class LessonController extends Controller
     public function show(Lesson $lesson)
     {
         //
+        return Lesson::findOrFail($lesson);
     }
 
     /**
@@ -55,6 +58,9 @@ class LessonController extends Controller
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
         //
+        $lesson = Lesson::findOrFail($lesson);
+        $lesson->update($request::all());
+        return $lesson;
     }
 
     /**
@@ -63,5 +69,6 @@ class LessonController extends Controller
     public function destroy(Lesson $lesson)
     {
         //
+        return Lesson::destroy($lesson);
     }
 }

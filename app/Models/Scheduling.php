@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Scheduling extends Model
 {
     use HasFactory;
+    protected $fillable =
+    [
+        'date',
+        'confirmationCode',
+        'client_id',
+        'lesson_id',
+
+    ];
     public function client()
     {
         return $this->belongsTo(Client::class);

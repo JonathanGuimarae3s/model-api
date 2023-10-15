@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\InstitutionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,31 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::get('/testpe', function () {
+//     return 'teste com success';
+// });
+
+
+
+
+
+// // rotas para o client
+// Route::get('/client', [ClientController::class, 'index']);
+// Route::get('/client/{id}', [ClientController::class, 'show']);
+// Route::put('/client/{id}', [ClientController::class, 'update']);
+// Route::delete('/client/{id}', [ClientController::class, 'destroy']);
+// Route::post('/client', [ClientController::class, 'store']);
+// // rotas para o institution
+
+// Route::get('/institution', [InstitutionController::class, 'index']);
+// Route::get('/institution/{id}', [InstitutionController::class, 'show']);
+// Route::put('/institution/{id}', [InstitutionController::class, 'update']);
+// Route::delete('/institution/{id}', [InstitutionController::class, 'destroy']);
+// Route::post('/institution', [InstitutionController::class, 'store']);
+
+
+Route::apiResources([
+    'client'=> ClientController::class,
+    'institution'=> InstitutionController::class
+]);

@@ -6,6 +6,10 @@ use App\Models\Institution;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreInstitutionRequest;
 use App\Http\Requests\UpdateInstitutionRequest;
+use App\Http\Resources\InstitutionCollection;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class InstitutionController extends Controller
 {
@@ -15,6 +19,7 @@ class InstitutionController extends Controller
     public function index()
     {
         //
+        return Institution::all();
     }
 
     /**
@@ -23,6 +28,7 @@ class InstitutionController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -31,14 +37,24 @@ class InstitutionController extends Controller
     public function store(StoreInstitutionRequest $request)
     {
         //
+
+        $institution = new Institution();
+        $institution->nameInstitution = $request->nameInstitution;
+        $institution->address = $request->address;
+        $institution->phoneNumber = $request->phoneNumber;
+        $institution->email = $request->email;
+        $institution->password = Hash::make($request->password);
+
+        $institution->save();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Institution $institution)
+    public function show($institution)
     {
         //
+        return Institution::findOrFail($institution);
     }
 
     /**
@@ -51,17 +67,32 @@ class InstitutionController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     *
+     *
      */
-    public function update(UpdateInstitutionRequest $request, Institution $institution)
+    public function update(Request $request, $institution)
     {
-        //
+        $institution = Institution::findOrFail($institution);
+
+        $institution->nameInstitution = $request->nameInstitution;
+        $institution->address = $request->address;
+        $institution->phoneNumber = $request->phoneNumber;
+        $institution->email = $request->email;
+        $institution->password = Hash::make($request->password);
+
+        $institution->save();
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
      */
-    public function destroy(Institution $institution)
+    public function destroy($institution)
+
     {
+
+        return Institution::destroy($institution);
         //
+
     }
 }

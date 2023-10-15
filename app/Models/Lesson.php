@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     use HasFactory;
+    protected $fillable =
+    [
+        'segment',
+        'period',
+        'professor',
+        'students',
+        'institution_id',
+    ];
     public function institution()
     {
         return $this->belongsTo(Institution::class);

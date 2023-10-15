@@ -15,6 +15,7 @@ class ClientController extends Controller
     public function index()
     {
         //
+        return Client::all();
     }
 
     /**
@@ -23,6 +24,7 @@ class ClientController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -31,14 +33,17 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
         //
+
+        return Client::create($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function show($client)
     {
         //
+        return Client::findOrFail($client);
     }
 
     /**
@@ -52,16 +57,20 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update(UpdateClientRequest $request,  $client)
     {
         //
+        $client = Client::findOrFail($client);
+        $client->update($request->all());
+        return $client;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client)
+    public function destroy($client)
     {
         //
+        return Client::destroy($client);
     }
 }

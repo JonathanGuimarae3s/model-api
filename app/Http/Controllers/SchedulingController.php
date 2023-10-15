@@ -15,6 +15,7 @@ class SchedulingController extends Controller
     public function index()
     {
         //
+        return Scheduling::all();
     }
 
     /**
@@ -31,6 +32,7 @@ class SchedulingController extends Controller
     public function store(StoreSchedulingRequest $request)
     {
         //
+        return Scheduling::create($request);
     }
 
     /**
@@ -39,6 +41,7 @@ class SchedulingController extends Controller
     public function show(Scheduling $scheduling)
     {
         //
+        return Scheduling::findOrFail($scheduling);
     }
 
     /**
@@ -55,6 +58,8 @@ class SchedulingController extends Controller
     public function update(UpdateSchedulingRequest $request, Scheduling $scheduling)
     {
         //
+        $scheduling = Scheduling::findOrFail($scheduling);
+        $scheduling->update($request);
     }
 
     /**

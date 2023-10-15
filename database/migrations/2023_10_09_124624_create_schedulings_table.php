@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('schedulings', function (Blueprint $table) {
             $table->id();
+            $table->string('date');
+            $table->string('confirmationCode')->unique();
+            $table->unsignedBigInteger('client_id'); // Alterei para 'client_id'
+            $table->unsignedBigInteger('lesson_id'); // Alterei para 'lesson_id'
+
             $table->timestamps();
+
+           // Alterei para 'client_id'
         });
     }
 
