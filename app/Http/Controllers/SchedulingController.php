@@ -6,6 +6,7 @@ use App\Models\Scheduling;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSchedulingRequest;
 use App\Http\Requests\UpdateSchedulingRequest;
+use Illuminate\Support\Facades\DB;
 
 class SchedulingController extends Controller
 {
@@ -14,8 +15,12 @@ class SchedulingController extends Controller
      */
     public function index()
     {
-        //
-        return Scheduling::all();
+        $schedulings = DB::table('schedulings')
+        ->join('clients', 'schedulings.client_id', '=', 'clients.id')
+        ->join('lessons', 'schedulings.lesson_id', '=', 'lessons.id')
+        ->select('*')
+        ->get();
+        return $schedulings;
     }
 
     /**
@@ -41,7 +46,8 @@ class SchedulingController extends Controller
     public function show(Scheduling $scheduling)
     {
         //
-        return Scheduling::findOrFail($scheduling);
+
+        return Scheduling::findOrFail($scheduling->id);
     }
 
     /**

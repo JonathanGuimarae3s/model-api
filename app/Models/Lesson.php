@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     use HasFactory;
+    public $timeStamps = false;
+
     protected $fillable =
     [
         'segment',
+        'nameLesson',
+        'endTime',
+        'startTime',
         'period',
         'professor',
         'students',

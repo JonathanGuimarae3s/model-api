@@ -32,7 +32,17 @@ class LessonController extends Controller
     public function store(StoreLessonRequest $request)
     {
         //
-        return Lesson::create($request);
+        $data = [
+            'segment' => $request->segment,
+            'nameLesson' => $request->nameLesson,
+            'endTime' => $request->endTime,
+            'startTime' => $request->startTime,
+            'period' => $request->period,
+            'professor' => $request->professor,
+            'students' => $request->students,
+            'institution_id' => $request->institution_id, // Substitua 1 pelo ID da instituição apropriada
+        ];
+        $lesson = Lesson::create($data);
     }
 
     /**
@@ -41,7 +51,7 @@ class LessonController extends Controller
     public function show(Lesson $lesson)
     {
         //
-        return Lesson::findOrFail($lesson);
+        return Lesson::findOrFail($lesson->id);
     }
 
     /**
@@ -58,8 +68,8 @@ class LessonController extends Controller
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
         //
-        $lesson = Lesson::findOrFail($lesson);
-        $lesson->update($request::all());
+        $lesson = Lesson::findOrFail($lesson->id);
+        $lesson->update($request->all());
         return $lesson;
     }
 
@@ -69,6 +79,6 @@ class LessonController extends Controller
     public function destroy(Lesson $lesson)
     {
         //
-        return Lesson::destroy($lesson);
+        return Lesson::destroy($lesson->id);
     }
 }

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\SchedulingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +46,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiResources([
-    'client'=> ClientController::class,
-    'institution'=> InstitutionController::class
+    'client' => ClientController::class,
+    'institution' => InstitutionController::class,
+    'scheduling' => SchedulingController::class,
+    'lesson' => LessonController::class
+
 ]);
