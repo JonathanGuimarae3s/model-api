@@ -11,6 +11,7 @@ class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * (get ) urlapi/client/
      */
     public function index()
     {
@@ -29,16 +30,26 @@ class ClientController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * post
      */
     public function store(StoreClientRequest $request)
     {
-        //
+        // //
+        $data = [
+            'nameClient' => $request->nameClient,
+            'responsible' => $request->responsible,
+            'email' => $request->email,
+            'phoneNumber' => $request->phoneNumber,
+            'age' => $request->age,
+            'password' => $request->password,
 
-        return Client::create($request->all());
+        ];
+        $client = Client::create($data);
     }
 
     /**
      * Display the specified resource.
+     * getbyid
      */
     public function show($client)
     {

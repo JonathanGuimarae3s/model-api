@@ -15,6 +15,7 @@ class Client extends Model
         'email',
         'phoneNumber',
         'age',
+        'password',
     ];
     public function scheduling()
     {

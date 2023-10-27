@@ -16,10 +16,10 @@ class SchedulingController extends Controller
     public function index()
     {
         $schedulings = DB::table('schedulings')
-        ->join('clients', 'schedulings.client_id', '=', 'clients.id')
-        ->join('lessons', 'schedulings.lesson_id', '=', 'lessons.id')
-        ->select('*')
-        ->get();
+            ->join('clients', 'schedulings.client_id', '=', 'clients.id')
+            ->join('lessons', 'schedulings.lesson_id', '=', 'lessons.id')
+            ->select('*')
+            ->get();
         return $schedulings;
     }
 
@@ -36,8 +36,17 @@ class SchedulingController extends Controller
      */
     public function store(StoreSchedulingRequest $request)
     {
-        //
-        return Scheduling::create($request);
+
+
+        $data = [
+            'date' => $request->date,
+            'confirmationCode' => $request->confirmationCode,
+            'client_id' => $request->client_id,
+            'lesson_id' => $request->lesson_id,
+            'hour' => $request->hora,
+
+        ];
+        $scheduling = Scheduling::create($data);
     }
 
     /**

@@ -44,7 +44,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::delete('/institution/{id}', [InstitutionController::class, 'destroy']);
 // Route::post('/institution', [InstitutionController::class, 'store']);
 
-
 Route::apiResources([
     'client' => ClientController::class,
     'institution' => InstitutionController::class,

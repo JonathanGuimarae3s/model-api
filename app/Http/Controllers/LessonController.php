@@ -6,6 +6,7 @@ use App\Models\Lesson;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
+use Illuminate\Support\Facades\DB;
 
 class LessonController extends Controller
 {
@@ -25,7 +26,8 @@ class LessonController extends Controller
     {
         //
     }
-
+    // join
+    
     /**
      * Store a newly created resource in storage.
      */

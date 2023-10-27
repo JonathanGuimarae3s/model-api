@@ -14,7 +14,7 @@ class Scheduling extends Model
         'confirmationCode',
         'client_id',
         'lesson_id',
-
+        'hour'
     ];
     public function client()
     {
