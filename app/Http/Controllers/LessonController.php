@@ -27,7 +27,7 @@ class LessonController extends Controller
         //
     }
     // join
-    
+
     /**
      * Store a newly created resource in storage.
      */
@@ -42,7 +42,7 @@ class LessonController extends Controller
             'period' => $request->period,
             'professor' => $request->professor,
             'students' => $request->students,
-            'institution_id' => $request->institution_id, // Substitua 1 pelo ID da instituição apropriada
+            'institution_id' => 1, // Substitua 1 pelo ID da instituição apropriada
         ];
         $lesson = Lesson::create($data);
     }

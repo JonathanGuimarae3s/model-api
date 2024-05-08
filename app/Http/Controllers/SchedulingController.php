@@ -16,11 +16,12 @@ class SchedulingController extends Controller
     public function index()
     {
         $schedulings = DB::table('schedulings')
-            ->join('clients', 'schedulings.client_id', '=', 'clients.id')
-            ->join('lessons', 'schedulings.lesson_id', '=', 'lessons.id')
-            ->select('*')
-            ->get();
-        return $schedulings;
+        ->join('clients', 'schedulings.client_id', '=', 'clients.id')
+        ->join('lessons', 'schedulings.lesson_id', '=', 'lessons.id')
+        ->select('*')
+        ->get();
+
+    return $schedulings;
     }
 
     /**
